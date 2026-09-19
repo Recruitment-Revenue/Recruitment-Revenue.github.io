@@ -49,71 +49,7 @@
     <!-- 17 Sep (Sultan): the Typeform qualifies first; on submit it hands over to the booking widget,
          which should then only ask name, email and a time (strip the event's questions in RecDash). -->
     <div class="qualify" data-qualify>
-      <div class="tf"><!-- The site IS the Typeform now (17 Sep). Same screens as form fWoUjXG8, same
-     words, same branching: owner? -> name -> company email -> company -> phone
-     -> revenue. £300k+ = revenue-qualified, straight to times (confirmation1).
-     £0-300k -> the investment question: Yes = price-qualified, to times
-     (confirmation2); No = "we'll reach out". Not an owner = "we'll reach out".
-     Not an owner or can't invest: "We received your application and will reach
-     out if it's a fit!" and no booking. After the booking RecDash sends the top
-     window to /booked, which forwards to confirmation1 (qualified) or
-     confirmation2 (price-qualified: under £300k) — the old Landing Page A / B. -->
-<form class="tq" data-qualify-form novalidate autocomplete="on">
-  <div class="tq-track"><i data-qbar></i></div>
-  <div class="tq-screens">
-    <section class="tq-s on" data-q="owner" data-kind="choice">
-      <p class="tq-n"><b>1</b>→</p>
-      <h3>Are you a recruitment agency owner?</h3>
-      <div class="tq-choices"><label><input type="radio" name="owner" value="Yes"><span><i>A</i>Yes</span></label><label><input type="radio" name="owner" value="No"><span><i>B</i>No</span></label></div>
-    </section>
-    <section class="tq-s" data-q="name" data-kind="text">
-      <p class="tq-n"><b>2</b>→</p>
-      <h3>What is your full name?</h3>
-      <input type="text" name="name" autocomplete="name" placeholder="Type your answer here…">
-    </section>
-    <section class="tq-s" data-q="email" data-kind="email">
-      <p class="tq-n"><b>3</b>→</p>
-      <h3>What is your company email address?</h3>
-      <input type="email" name="email" autocomplete="email" placeholder="name@company.com">
-    </section>
-    <section class="tq-s" data-q="company" data-kind="text">
-      <p class="tq-n"><b>4</b>→</p>
-      <h3>What is your company name?</h3>
-      <input type="text" name="company" autocomplete="organization" placeholder="Type your answer here…">
-    </section>
-    <section class="tq-s" data-q="phone" data-kind="tel">
-      <p class="tq-n"><b>5</b>→</p>
-      <h3>What is the best phone number to reach you?</h3>
-      <input type="tel" name="phone" autocomplete="tel" placeholder="+44 7…">
-    </section>
-    <section class="tq-s" data-q="revenue" data-kind="choice">
-      <p class="tq-n"><b>6</b>→</p>
-      <h3>Roughly what was your revenue in the last 12 months?</h3>
-      <div class="tq-choices col">
-        <label><input type="radio" name="revenue" value="0-300k"><span><i>A</i>0-300k</span></label>
-        <label><input type="radio" name="revenue" value="300k-1M"><span><i>B</i>300k-1M</span></label>
-        <label><input type="radio" name="revenue" value="1M-5M"><span><i>C</i>1M-5M</span></label>
-        <label><input type="radio" name="revenue" value="5M-20M"><span><i>D</i>5M-20M</span></label>
-        <label><input type="radio" name="revenue" value="20M+"><span><i>E</i>20M+</span></label>
-      </div>
-    </section>
-    <section class="tq-s" data-q="invest" data-kind="choice">
-      <p class="tq-n"><b>7</b>→</p>
-      <h3>Our services range from £2,500/mo - £3,000/mo. Given we are a good fit, is this a comfortable investment for you to make?</h3>
-      <div class="tq-choices"><label><input type="radio" name="invest" value="Yes"><span><i>A</i>Yes</span></label><label><input type="radio" name="invest" value="No"><span><i>B</i>No</span></label></div>
-    </section>
-    <section class="tq-s tq-end" data-q="end">
-      <h3>We received your application and will reach out if it’s a fit!</h3>
-      <p>Thanks for taking the time. Sultan reads every one of these.</p>
-    </section>
-  </div>
-  <div class="tq-nav">
-    <span class="tq-hint" data-hint>press <b>Enter ↵</b></span>
-    <button type="button" class="tq-ok" data-qnext>OK <span>✓</span></button>
-    <div class="tq-arrows"><button type="button" data-qprev aria-label="Previous question">↑</button><button type="button" data-qskip aria-label="Next question">↓</button></div>
-  </div>
-</form>
-</div>
+      <div class="tf"><iframe class="enq" data-enquire src="https://recdash.com/f/discovery-qualifier?embed=1&src=website" title="A few quick questions" allow="clipboard-write"></iframe></div>
     <div class="embed hidden">
             <!-- The website event (slug discovery-call): no questions of its own. lite=1 opens the widget on the calendar with the qualifier's details already in it. -->
       <iframe src="https://recdash.com/bookings/discovery-call?embed=1&lite=1" title="Book a discovery call" loading="lazy" allow="clipboard-write"></iframe>

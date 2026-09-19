@@ -195,6 +195,19 @@ window.recrevQualified = function () {
   q.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
+/* 19 Sep: the qualifier is an Enquire form in an iframe. It reports its
+   height, its outcome (qualified / price_qualified / unqualified) and, once the
+   booking widget inside it is used, the booking itself. */
+window.addEventListener('message', function (e) {
+  var d = e && e.data;
+  if (!d || typeof d !== 'object') return;
+  var fr = document.querySelector('[data-enquire]');
+  if (d.type === 'recdash-form-height' && fr && d.height) fr.style.height = Math.max(420, Math.ceil(d.height) + 4) + 'px';
+  if (d.type === 'recdash-form-complete') {
+    try { sessionStorage.setItem('recrev_q', d.outcome === 'price_qualified' ? 'price' : 'qualified'); } catch (x) {}
+  }
+});
+
 /* Booking made inside the widget -> the site takes them to its own
    confirmation page: 1 for revenue-qualified, 2 for price-qualified. */
 window.addEventListener('message', function (e) {
