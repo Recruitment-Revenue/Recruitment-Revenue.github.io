@@ -1,4 +1,5 @@
 /* VSL chapters {s: seconds, title}. Filled from the transcript, 21 Sep. */
+window.VSL_DURATION = 720; /* until the video reports its own length */
 window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:41,title:"Recruitment only, real callers"},{s:68,title:"Results so far"},{s:111,title:"The guarantee and the cost"},{s:151,title:"Why I built RecRev"},{s:203,title:"Three reasons you're here"},{s:267,title:"How we do it"},{s:313,title:"How we qualify every meeting"},{s:361,title:"Who this is for"},{s:392,title:"Client stories"},{s:485,title:"What you actually get"},{s:578,title:"Us vs an in-house hire"},{s:643,title:"Guaranteed results"},{s:666,title:"Book a call"}];
 // RecRev site — progressive enhancements. No framework.
 (function () {
@@ -80,17 +81,38 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       v.addEventListener('timeupdate', function () { timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration); });
       v.addEventListener('loadedmetadata', function () { timeEl.textContent = '0:00 / ' + fmt(v.duration); });
     }
-    var list = box.parentElement.querySelector('[data-chapters]');
-    var chapters = window.VSL_CHAPTERS || [];
-    if (list && chapters.length) {
-      chapters.forEach(function (ch) {
-        var li = document.createElement('li'); li.innerHTML = '<b>' + fmt(ch.s) + '</b>' + ch.title;
-        li.addEventListener('click', function () { start(); unmute(); box.classList.remove('paused', 'user-paused'); v.currentTime = ch.s; play(); });
-        list.appendChild(li);
+    /* 21 Sep (Kwame): chapters are segments on the progress bar, YouTube style. Hover shows the name, click seeks. */
+    var chapters = window.VSL_CHAPTERS || [], barBox = box.querySelector('[data-bar-box]'), segs = [];
+    function seekTo(t) { start(); unmute(); box.classList.remove('paused', 'user-paused'); v.currentTime = t; play(); }
+    function buildSegs(dur) {
+      if (!barBox || !chapters.length || !dur) return;
+      if (segs.length) { /* real duration arrived: resize the last chapter */
+        var last = segs[segs.length - 1]; last.e = dur; last.el.style.flex = String(Math.max(1, dur - last.s)) + ' 1 0'; return;
+      }
+      barBox.classList.add('seg');
+      chapters.forEach(function (ch, i) {
+        var d = document.createElement('div'); d.className = 's'; d.setAttribute('data-title', fmt(ch.s) + '  ' + ch.title);
+        var sg = { el: d, s: ch.s, e: i + 1 < chapters.length ? chapters[i + 1].s : dur };
+        d.style.flex = String(Math.max(1, sg.e - sg.s)) + ' 1 0';
+        d.appendChild(document.createElement('i'));
+        d.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var r = d.getBoundingClientRect(); seekTo(sg.s + (sg.e - sg.s) * Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)));
+        });
+        segs.push(sg); barBox.appendChild(d);
+      });
+    }
+    if (barBox) {
+      buildSegs(v.duration || window.VSL_DURATION || 0);
+      v.addEventListener('loadedmetadata', function () { buildSegs(v.duration); });
+      barBox.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (segs.length || !v.duration) return;
+        var r = barBox.getBoundingClientRect(); seekTo(v.duration * Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)));
       });
       v.addEventListener('timeupdate', function () {
-        var cur = -1; chapters.forEach(function (ch, i) { if (v.currentTime >= ch.s) cur = i; });
-        Array.prototype.forEach.call(list.children, function (li, i) { li.classList.toggle('on', i === cur); });
+        if (!segs.length) return;
+        segs.forEach(function (sg) { sg.el.firstChild.style.width = (Math.min(1, Math.max(0, (v.currentTime - sg.s) / (sg.e - sg.s))) * 100) + '%'; });
       });
     }
   });
@@ -133,48 +155,35 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
   }
 
   /* ── reveal on scroll ── */
-  function splitWords(el) {
-    // wrap each word in a masked span; keeps <em class="acc"> intact
-    function walk(node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
-        if (n.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          n.textContent.split(/(\s+)/).forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
-            var w = document.createElement('span'); w.className = 'w';
-            var i = document.createElement('span'); i.textContent = part; w.appendChild(i); frag.appendChild(w);
-          });
-          node.replaceChild(frag, n);
-        } else if (n.nodeType === 1 && !n.classList.contains('w')) walk(n);
-      });
-    }
-    walk(el);
-    var words = el.querySelectorAll('.w>span');
-    words.forEach(function (s, i) { s.style.transitionDelay = (i * 0.045) + 's'; });
-  }
   if (!reduce && 'IntersectionObserver' in window) {
-    document.querySelectorAll('[data-split]').forEach(splitWords);
+    /* 21 Sep (Kwame): reveals looked broken mid-scroll. Now: as soon as any part of a block is on screen it rises
+       as one, anything on screen at load shows at once, and reaching the bottom reveals whatever is left. */
     var targets = document.querySelectorAll('.rv, .rv-stagger, .split');
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
-    targets.forEach(function (t) { io.observe(t); });
-    // belt and braces: a scroll/resize check reveals anything the observer missed,
-    // and anything already on screen at load shows at once
     var pending = Array.prototype.slice.call(targets);
+    function show(t) { t.classList.add('in'); io.unobserve(t); }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) show(e.target); });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0 });
     function sweep() {
+      var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
       pending = pending.filter(function (t) {
         var r = t.getBoundingClientRect();
-        if (r.top < window.innerHeight * 0.92 && r.bottom > 0) { t.classList.add('in'); io.unobserve(t); return false; }
+        if (atBottom || (r.top < window.innerHeight * 0.96 && r.bottom > 0)) { show(t); return false; }
         return true;
       });
     }
+    pending.forEach(function (t) {
+      var r = t.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) { t.style.transition = 'none'; t.classList.add('in'); }
+      else io.observe(t);
+    });
+    pending = pending.filter(function (t) { return !t.classList.contains('in'); });
     var ticking = false;
     function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { sweep(); ticking = false; }); }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
-    requestAnimationFrame(sweep); setTimeout(sweep, 300); setTimeout(sweep, 1200);
+    window.addEventListener('load', sweep);
+    setTimeout(sweep, 300); setTimeout(sweep, 1200);
   } else {
     document.querySelectorAll('.rv, .rv-stagger, .split').forEach(function (t) { t.classList.add('in'); });
   }

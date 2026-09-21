@@ -541,8 +541,19 @@ section.dark .btn.primary:hover:after{opacity:1}
 .player .sound:hover{transform:translateX(-50%) translateY(-2px)}
 .player .sound i{width:26px;height:26px;border-radius:8px;background:var(--grad);display:inline-flex;align-items:center;justify-content:center;font-style:normal;color:#fff;font-size:13px}
 .player.sound-on .sound{opacity:0;pointer-events:none}
-.player .bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.18);z-index:2}
-.player .bar i{display:block;height:100%;width:0;background:var(--grad)}
+.player .bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.18);z-index:5;transition:bottom .2s,height .15s;cursor:pointer}
+.player .bar>i{display:block;height:100%;width:0;background:var(--grad)}
+/* 21 Sep (Kwame): chapters live on the progress bar, YouTube style: one segment per chapter, name on hover */
+.player .bar.seg{display:flex;gap:3px;background:transparent}
+.player .bar.seg>i{display:none}
+.player .bar .s{position:relative;height:100%;background:rgba(255,255,255,.34);transition:transform .15s;transform-origin:bottom}
+.player .bar .s>i{display:block;height:100%;width:0;background:var(--grad);pointer-events:none}
+.player .bar:hover{height:7px}.player .bar .s:hover{transform:scaleY(1.35)}
+.player .bar .s:after{content:attr(data-title);position:absolute;bottom:14px;left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;background:rgba(0,0,0,.82);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:7px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+.player .bar .s:first-child:after{left:0;transform:none}.player .bar .s:last-child:after{left:auto;right:0;transform:none}
+.player .bar .s:hover:after{opacity:1;transform:translateX(-50%)}
+.player .bar .s:first-child:hover:after,.player .bar .s:last-child:hover:after{transform:none}
+.player .bar:before{content:"";position:absolute;left:0;right:0;top:-14px;bottom:-6px}
 .player .big{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:3}
 .player .big span{width:80px;height:80px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;padding-left:6px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
 .player.paused .big{display:flex}
@@ -590,17 +601,16 @@ section.dark .sec-head .lead{color:rgba(255,255,255,.7)}
 .embed{border-radius:var(--r);box-shadow:0 40px 90px -50px rgba(30,16,80,.45)}
 
 /* reveal on scroll — added by JS only, so without JS everything is simply there */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv,.split{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+.split.in{opacity:1;transform:none}
 .rv.in{opacity:1;transform:none}
-.rv-stagger>*{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv-stagger>*{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1)}
 .rv-stagger.in>*{opacity:1;transform:none}
 .rv-stagger.in>*:nth-child(2){transition-delay:.08s}.rv-stagger.in>*:nth-child(3){transition-delay:.16s}.rv-stagger.in>*:nth-child(4){transition-delay:.24s}
 .rv-stagger.in>*:nth-child(5){transition-delay:.32s}.rv-stagger.in>*:nth-child(6){transition-delay:.4s}
 /* headline words rise out of a mask, one after another (Throxy's move) */
-.split .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em;margin-bottom:-.06em}
-.split .w>span{display:inline-block;transform:translateY(110%);transition:transform .9s cubic-bezier(.2,.7,.1,1)}
-.split.in .w>span{transform:none}
-@media(prefers-reduced-motion:reduce){.rv,.rv-stagger>*{opacity:1;transform:none;transition:none}.split .w>span{transform:none;transition:none}.clients .row,.marquee .track{animation:none}}
+/* 21 Sep (Kwame): the word-by-word mask looked broken mid-scroll; headings now rise as one */
+@media(prefers-reduced-motion:reduce){.rv,.rv-stagger>*{opacity:1;transform:none;transition:none}.split{opacity:1;transform:none;transition:none}.clients .row,.marquee .track{animation:none}}
 
 /* ── 17 Sep, flair pass (Kwame: "a little flare… not general AI slop") ──
    Three floating proof cards beside the VSL, a slow shimmer through the two
@@ -687,9 +697,4 @@ body.scrolled nav.top{box-shadow:0 10px 30px -22px rgba(30,16,80,.35);background
 .player .ctrl .c-spacer{flex:1}.player .ctrl .c-time{font-variant-numeric:tabular-nums;opacity:.9}
 .player .ctrl .c-speed{min-width:46px}
 .player:fullscreen{border-radius:0}.player:fullscreen video{object-fit:contain}
-.player .bar{bottom:52px}
-.chapters{list-style:none;margin:12px 6px 4px;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.chapters li{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#e9e6f5;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
-.chapters li:hover{background:rgba(255,255,255,.12)}.chapters li.on{background:var(--grad);border-color:transparent;color:#fff}
-.chapters li b{font-weight:700;font-variant-numeric:tabular-nums;opacity:.85}
-.chapters:empty{display:none}
+.player:hover .bar,.player.paused .bar,.player:fullscreen .bar{bottom:52px}
