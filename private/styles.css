@@ -449,7 +449,7 @@ footer{margin-top:64px}
    scrolling if it all just sits there. Collapsed to a long-but-finite run with
    a fade, and one button opens the rest. Without JS the fade and button are
    harmless and the feed simply renders open. */
-.wall-feed{position:relative;max-height:1750px;overflow:hidden;transition:max-height .45s ease}
+.wall-feed{position:relative}
 .wall-feed.open{max-height:none}
 .wall-fade{position:absolute;left:0;right:0;bottom:0;height:180px;pointer-events:none;
   background:linear-gradient(to bottom,rgba(255,255,255,0),var(--paper,#fff) 88%)}
@@ -506,7 +506,7 @@ section.dark .btn.primary:hover:after{opacity:1}
 
 /* 17 Sep (Sultan): VSL -> Typeform qualifies -> booking is just name, email, date */
 .qualify{position:relative;z-index:1}
-.qualify .enq{display:block;width:100%;max-width:880px;margin:0 auto;height:560px;border:0;background:#fff;border-radius:var(--r);box-shadow:0 40px 90px -50px rgba(30,16,80,.45);transition:height .3s ease}
+.qualify .enq{display:block;width:100%;max-width:1040px;margin:0 auto;height:640px;border:0;background:#fff;border-radius:var(--r);box-shadow:0 40px 90px -50px rgba(30,16,80,.45);transition:height .3s ease}
 .qualify [data-tf-widget]{min-height:560px}
 .embed.hidden{display:none}
 .qualify.done .tf{display:none}
@@ -675,3 +675,21 @@ body.scrolled nav.top{box-shadow:0 10px 30px -22px rgba(30,16,80,.35);background
 .embed.loading:before{content:"";position:absolute;inset:0;z-index:3;background:#fff}
 .embed.loading:after{content:"";position:absolute;left:50%;top:180px;width:34px;height:34px;margin-left:-17px;border-radius:50%;border:3px solid var(--hair-2);border-top-color:var(--blue);animation:spin .8s linear infinite;z-index:4}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* 21 Sep (Sultan): centred section heads, no helper text */
+.sec-head.center{grid-template-columns:1fr;justify-items:center;text-align:center;align-items:center}
+.sec-head.center h2{max-width:24ch;margin-inline:auto}
+/* 21 Sep (Sultan): VSL controls like a real player, plus chapters */
+.player .ctrl{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;gap:10px;padding:10px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.6));opacity:0;transition:opacity .2s;color:#fff;font:600 12px/1 Inter,system-ui,sans-serif}
+.player:hover .ctrl,.player.paused .ctrl,.player:fullscreen .ctrl{opacity:1}
+.player .ctrl button{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;height:30px;min-width:34px;padding:0 10px;cursor:pointer;font:600 12px/1 Inter,system-ui,sans-serif;backdrop-filter:blur(6px)}
+.player .ctrl button:hover{background:rgba(255,255,255,.26)}
+.player .ctrl .c-spacer{flex:1}.player .ctrl .c-time{font-variant-numeric:tabular-nums;opacity:.9}
+.player .ctrl .c-speed{min-width:46px}
+.player:fullscreen{border-radius:0}.player:fullscreen video{object-fit:contain}
+.player .bar{bottom:52px}
+.chapters{list-style:none;margin:12px 6px 4px;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chapters li{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#e9e6f5;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
+.chapters li:hover{background:rgba(255,255,255,.12)}.chapters li.on{background:var(--grad);border-color:transparent;color:#fff}
+.chapters li b{font-weight:700;font-variant-numeric:tabular-nums;opacity:.85}
+.chapters:empty{display:none}

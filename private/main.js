@@ -1,3 +1,5 @@
+/* VSL chapters {s: seconds, title}. Filled from the transcript, 21 Sep. */
+window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:41,title:"Recruitment only, real callers"},{s:68,title:"Results so far"},{s:111,title:"The guarantee and the cost"},{s:151,title:"Why I built RecRev"},{s:203,title:"Three reasons you're here"},{s:267,title:"How we do it"},{s:313,title:"How we qualify every meeting"},{s:361,title:"Who this is for"},{s:392,title:"Client stories"},{s:485,title:"What you actually get"},{s:578,title:"Us vs an in-house hire"},{s:643,title:"Guaranteed results"},{s:666,title:"Book a call"}];
 // RecRev site — progressive enhancements. No framework.
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -58,6 +60,39 @@
     });
     v.addEventListener('play', function () { box.classList.remove('paused'); });
     v.addEventListener('timeupdate', function () { if (bar && v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%'; });
+
+    /* 21 Sep (Sultan): real controls: play/pause, time, speed 1/1.25/1.5/2, full screen. Plus chapters. */
+    var ctrl = box.querySelector('[data-ctrl]');
+    function unmute() { if (!box.classList.contains('sound-on')) { v.muted = false; v.volume = 1; box.classList.add('sound-on'); } }
+    function fmt(t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2); }
+    if (ctrl) {
+      var playB = ctrl.querySelector('[data-play]'), timeEl = ctrl.querySelector('[data-time]'), speedB = ctrl.querySelector('[data-speed]'), fullB = ctrl.querySelector('[data-full]');
+      var speeds = [1, 1.25, 1.5, 2], si = 0;
+      ctrl.addEventListener('click', function (e) { e.stopPropagation(); });
+      playB.addEventListener('click', function () { if (v.paused) { box.classList.remove('paused', 'user-paused'); unmute(); start(); play(); } else { v.pause(); box.classList.add('paused', 'user-paused'); } });
+      speedB.addEventListener('click', function () { si = (si + 1) % speeds.length; v.playbackRate = speeds[si]; speedB.textContent = speeds[si] + '×'; });
+      fullB.addEventListener('click', function () {
+        if (document.fullscreenElement) { if (document.exitFullscreen) document.exitFullscreen(); return; }
+        if (box.requestFullscreen) box.requestFullscreen(); else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+      });
+      v.addEventListener('play', function () { playB.textContent = '❚❚'; });
+      v.addEventListener('pause', function () { playB.textContent = '▶'; });
+      v.addEventListener('timeupdate', function () { timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration); });
+      v.addEventListener('loadedmetadata', function () { timeEl.textContent = '0:00 / ' + fmt(v.duration); });
+    }
+    var list = box.parentElement.querySelector('[data-chapters]');
+    var chapters = window.VSL_CHAPTERS || [];
+    if (list && chapters.length) {
+      chapters.forEach(function (ch) {
+        var li = document.createElement('li'); li.innerHTML = '<b>' + fmt(ch.s) + '</b>' + ch.title;
+        li.addEventListener('click', function () { start(); unmute(); box.classList.remove('paused', 'user-paused'); v.currentTime = ch.s; play(); });
+        list.appendChild(li);
+      });
+      v.addEventListener('timeupdate', function () {
+        var cur = -1; chapters.forEach(function (ch, i) { if (v.currentTime >= ch.s) cur = i; });
+        Array.prototype.forEach.call(list.children, function (li, i) { li.classList.toggle('on', i === cur); });
+      });
+    }
   });
 
   /* ── hero: the wash leans toward the pointer ── */
@@ -165,17 +200,6 @@ window.addEventListener('message', function (e) {
   if (!d || d.type !== 'recdash-booking-height' || !d.height) return;
   document.querySelectorAll('iframe[src*="recdash.com/bookings"]').forEach(function (f) {
     f.style.height = Math.max(520, Math.ceil(d.height) + 8) + 'px';
-  });
-});
-
-/* Wall of love: one button opens the full run of client messages. */
-document.querySelectorAll('[data-wall-more]').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var feed = document.querySelector('[data-wall]');
-    if (!feed) return;
-    var open = feed.classList.toggle('open');
-    btn.textContent = open ? 'Show fewer' : 'Read more messages';
-    if (!open) feed.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
