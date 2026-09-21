@@ -698,3 +698,10 @@ body.scrolled nav.top{box-shadow:0 10px 30px -22px rgba(30,16,80,.35);background
 .player .ctrl .c-speed{min-width:46px}
 .player:fullscreen{border-radius:0}.player:fullscreen video{object-fit:contain}
 .player:hover .bar,.player.paused .bar,.player:fullscreen .bar{bottom:52px}
+
+/* 21 Sep (Sultan): one row of sector employers, mark + name, grayscale, evenly spaced */
+.clients.sectors .row{gap:0;animation-duration:120s;margin-bottom:0}
+.clients.sectors .mark{display:inline-flex;align-items:center;gap:11px;padding:0 30px;height:48px;flex:none;color:var(--ink-3);font-family:var(--serif);font-weight:600;font-size:16.5px;letter-spacing:-.01em;white-space:nowrap;opacity:.72;transition:opacity .25s,color .25s}
+.clients.sectors .mark img{height:24px;width:auto;max-width:72px;display:block;opacity:.75;filter:grayscale(1);transition:opacity .25s,filter .25s}
+.clients.sectors .mark:hover{opacity:1;color:var(--ink)}.clients.sectors .mark:hover img{opacity:1}
+.clients.sectors .row:hover{animation-play-state:running}
