@@ -60,8 +60,7 @@ nav.top .links a{text-decoration:none;position:relative}
 nav.top .links a:after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1.5px;background:var(--grad);transition:right .2s}
 nav.top .links a:hover:after{right:0}
 nav.top .navcta{display:flex;align-items:center;gap:14px}
-nav.top .navcta .wa{font-size:14px;color:var(--ink-3);text-decoration:none}
-@media(max-width:860px){nav.top .links,nav.top .navcta .wa{display:none}}
+@media(max-width:860px){nav.top .links{display:none}}
 
 /* sections */
 section{padding:112px 0}
@@ -669,11 +668,6 @@ section.dark .sec-head .lead{color:rgba(255,255,255,.7)}
 .tq [hidden]{display:none!important}
 .tq.done{display:none}
 
-/* WhatsApp: floating, bottom-right, always there */
-.wa-float{position:fixed;right:22px;bottom:22px;z-index:120;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font:700 14px/1 var(--sans);padding:12px 18px 12px 12px;border-radius:999px;box-shadow:0 18px 40px -14px rgba(37,211,102,.7),0 2px 0 rgba(0,0,0,.05);transition:transform .2s,box-shadow .2s}
-.wa-float img{width:24px;height:24px;filter:brightness(0) invert(1)}
-.wa-float:hover{transform:translateY(-2px);box-shadow:0 24px 46px -14px rgba(37,211,102,.8)}
-@media(max-width:640px){.wa-float span{display:none}.wa-float{padding:12px;right:16px;bottom:16px}}
 
 /* premium touches: the nav tightens once you scroll */
 nav.top{transition:box-shadow .3s,background .3s}
