@@ -741,3 +741,33 @@ body.scrolled nav.top{box-shadow:0 10px 30px -22px rgba(30,16,80,.35);background
 html{-webkit-text-size-adjust:100%}
 body{overflow-x:clip}
 img{max-width:100%}
+
+
+/* ── 22 Sep 2026, second phone pass (Kwame, from his own screenshots) ── */
+
+/* The "how it works" left column is sticky so it holds beside the steps on a
+   wide screen. In one column it pinned itself and the steps scrolled straight
+   over the top of it, which is the overlap he photographed. */
+@media(max-width:900px){
+  .how .sticky{position:static;top:auto}
+}
+
+/* The employer strip on a phone. Three things were wrong: the marks kept
+   their desktop size so barely two fitted, and the 140px fade on each edge
+   covered 280px of a 390px screen, which is why the logos looked half erased
+   rather than moving. The transform is promoted so iOS keeps compositing it. */
+.clients .row{will-change:transform;backface-visibility:hidden}
+@media(max-width:640px){
+  .clients{padding:34px 0 14px}
+  .clients p{font-size:13px;margin-bottom:18px;padding:0 4px}
+  .clients:before,.clients:after{width:44px}
+  .clients.sectors .row{animation-duration:42s}
+  .clients.sectors .row.b{animation-duration:50s}
+  .clients.sectors .mark{padding:0 15px;height:38px;gap:7px;font-size:13.5px;opacity:.85}
+  .clients.sectors .mark img{height:18px;max-width:54px}
+}
+
+/* The thank-you page is two lines; let them breathe instead of sitting under
+   a hero built for a headline plus chips. */
+.hero.thanks{padding-bottom:90px}
+.hero.thanks .lead{color:var(--ink-3)}
