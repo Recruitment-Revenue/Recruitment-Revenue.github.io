@@ -705,3 +705,39 @@ body.scrolled nav.top{box-shadow:0 10px 30px -22px rgba(30,16,80,.35);background
 .clients.sectors .mark img{height:24px;width:auto;max-width:72px;display:block;opacity:.75;filter:grayscale(1);transition:opacity .25s,filter .25s}
 .clients.sectors .mark:hover{opacity:1;color:var(--ink)}.clients.sectors .mark:hover img{opacity:1}
 .clients.sectors .row:hover{animation-play-state:running}
+
+/* ── 22 Sep 2026, phone pass (Kwame: "it is not optimised for mobile viewing") ──
+   The layout already collapsed to one column, but it kept desktop rhythm: 112px
+   between every section, a 24px gutter, and two embedded iframes pinned to fixed
+   desktop heights, which left a blank half-screen under the qualifier. */
+@media(max-width:860px){
+  section{padding:76px 0}
+  section.tight{padding:48px 0}
+  .vsl{margin-top:34px}
+}
+@media(max-width:640px){
+  section{padding:56px 0}
+  section.tight{padding:40px 0}
+  .wrap{padding-inline:16px}
+  .hero h1{letter-spacing:-.03em}
+  .vsl{margin-top:26px;padding:6px;border-radius:18px}
+  .vsl .frame{border-radius:13px}
+  /* The booking widget and the qualifier both report their own height by
+     postMessage; these are only the heights they hold until that lands, so a
+     phone never shows a tall empty card. */
+  .qualify .enq{height:min(78vh,560px);border-radius:18px}
+  .embed{min-height:0;border-radius:18px}
+  .embed iframe{height:min(92vh,720px)}
+  .embed.loading:after{top:120px}
+  .chips{gap:8px;margin-top:20px}
+  .chip{font-size:12.5px;padding:6px 11px}
+  .clients{padding:40px 0 18px}
+  .marquee{padding:26px 0 6px}
+  .wall.tall{gap:0 12px;margin-top:14px}
+  .wall.tall .col{gap:12px}
+}
+/* Nothing on the page is meant to scroll sideways; clip rather than hide so
+   the sticky nav keeps working. */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:clip}
+img{max-width:100%}

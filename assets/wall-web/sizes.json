@@ -1,0 +1,217 @@
+{
+ "wall-james/james-01.png": {
+  "file": "wall-james-james-01.webp",
+  "h": 288,
+  "w": 800
+ },
+ "wall-james/james-02.png": {
+  "file": "wall-james-james-02.webp",
+  "h": 98,
+  "w": 768
+ },
+ "wall-james/james-03.png": {
+  "file": "wall-james-james-03.webp",
+  "h": 68,
+  "w": 787
+ },
+ "wall-james/james-04.png": {
+  "file": "wall-james-james-04.webp",
+  "h": 177,
+  "w": 790
+ },
+ "wall-james/james-05.png": {
+  "file": "wall-james-james-05.webp",
+  "h": 496,
+  "w": 533
+ },
+ "wall-james/james-06.jpg": {
+  "file": "wall-james-james-06.webp",
+  "h": 696,
+  "w": 800
+ },
+ "wall-james/james-07.png": {
+  "file": "wall-james-james-07.webp",
+  "h": 368,
+  "w": 800
+ },
+ "wall-james/james-08.png": {
+  "file": "wall-james-james-08.webp",
+  "h": 206,
+  "w": 800
+ },
+ "wall-james/james-09.png": {
+  "file": "wall-james-james-09.webp",
+  "h": 78,
+  "w": 800
+ },
+ "wall-james/james-10.png": {
+  "file": "wall-james-james-10.webp",
+  "h": 83,
+  "w": 800
+ },
+ "wall-james/james-11.png": {
+  "file": "wall-james-james-11.webp",
+  "h": 157,
+  "w": 800
+ },
+ "wall-james/james-12.png": {
+  "file": "wall-james-james-12.webp",
+  "h": 143,
+  "w": 800
+ },
+ "wall-james/james-13.png": {
+  "file": "wall-james-james-13.webp",
+  "h": 235,
+  "w": 800
+ },
+ "wall-james/james-14.png": {
+  "file": "wall-james-james-14.webp",
+  "h": 93,
+  "w": 691
+ },
+ "wall-james/james-15.png": {
+  "file": "wall-james-james-15.webp",
+  "h": 99,
+  "w": 800
+ },
+ "wall-james/james-16.png": {
+  "file": "wall-james-james-16.webp",
+  "h": 130,
+  "w": 800
+ },
+ "wall-james/james-17.png": {
+  "file": "wall-james-james-17.webp",
+  "h": 57,
+  "w": 800
+ },
+ "wall-james/james-18.png": {
+  "file": "wall-james-james-18.webp",
+  "h": 349,
+  "w": 800
+ },
+ "wall-james/james-19.png": {
+  "file": "wall-james-james-19.webp",
+  "h": 202,
+  "w": 800
+ },
+ "wall-james/james-20.png": {
+  "file": "wall-james-james-20.webp",
+  "h": 219,
+  "w": 787
+ },
+ "wall-james/james-21.png": {
+  "file": "wall-james-james-21.webp",
+  "h": 193,
+  "w": 762
+ },
+ "wall/wall-01.jpg": {
+  "file": "wall-wall-01.webp",
+  "h": 368,
+  "w": 800
+ },
+ "wall/wall-02.jpg": {
+  "file": "wall-wall-02.webp",
+  "h": 177,
+  "w": 790
+ },
+ "wall/wall-03.jpg": {
+  "file": "wall-wall-03.webp",
+  "h": 78,
+  "w": 800
+ },
+ "wall/wall-04.jpg": {
+  "file": "wall-wall-04.webp",
+  "h": 349,
+  "w": 800
+ },
+ "wall/wall-05.jpg": {
+  "file": "wall-wall-05.webp",
+  "h": 57,
+  "w": 800
+ },
+ "wall/wall-06.jpg": {
+  "file": "wall-wall-06.webp",
+  "h": 69,
+  "w": 800
+ },
+ "wall/wall-07.jpg": {
+  "file": "wall-wall-07.webp",
+  "h": 100,
+  "w": 800
+ },
+ "wall/wall-08.jpg": {
+  "file": "wall-wall-08.webp",
+  "h": 745,
+  "w": 800
+ },
+ "wall/wall-09.jpg": {
+  "file": "wall-wall-09.webp",
+  "h": 155,
+  "w": 800
+ },
+ "wall/wall-10.jpg": {
+  "file": "wall-wall-10.webp",
+  "h": 205,
+  "w": 800
+ },
+ "wall/wall-11.jpg": {
+  "file": "wall-wall-11.webp",
+  "h": 282,
+  "w": 800
+ },
+ "wall/wall-12.jpg": {
+  "file": "wall-wall-12.webp",
+  "h": 83,
+  "w": 800
+ },
+ "wall/wall-13.jpg": {
+  "file": "wall-wall-13.webp",
+  "h": 140,
+  "w": 800
+ },
+ "wall/wall-14.jpg": {
+  "file": "wall-wall-14.webp",
+  "h": 688,
+  "w": 800
+ },
+ "wall/wall-15.jpg": {
+  "file": "wall-wall-15.webp",
+  "h": 96,
+  "w": 800
+ },
+ "wall/wall-16.jpg": {
+  "file": "wall-wall-16.webp",
+  "h": 261,
+  "w": 800
+ },
+ "wall/wall-17.jpg": {
+  "file": "wall-wall-17.webp",
+  "h": 103,
+  "w": 800
+ },
+ "wall/wall-18.jpg": {
+  "file": "wall-wall-18.webp",
+  "h": 203,
+  "w": 800
+ },
+ "wall/wall-19.jpg": {
+  "file": "wall-wall-19.webp",
+  "h": 209,
+  "w": 800
+ },
+ "wall/wall-20.jpg": {
+  "file": "wall-wall-20.webp",
+  "h": 231,
+  "w": 800
+ },
+ "wall/wall-21.jpg": {
+  "file": "wall-wall-21.webp",
+  "h": 127,
+  "w": 800
+ },
+ "wall/wall-22.jpg": {
+  "file": "wall-wall-22.webp",
+  "h": 155,
+  "w": 800
+ }
+}
