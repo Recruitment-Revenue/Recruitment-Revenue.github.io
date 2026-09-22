@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: /
-# TODO at launch: replace with "Allow: /" and add Sitemap

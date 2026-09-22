@@ -248,7 +248,7 @@ window.addEventListener('message', function (e) {
   if (!d || d.type !== 'recdash-booking-complete') return;
   var q = ''; try { q = sessionStorage.getItem('recrev_q') || ''; } catch (x) {}
   var page = q === 'price' ? 'confirmation2' : 'confirmation1';
-  location.href = location.protocol === 'file:' ? page + '.html' : '/private/' + page;
+  location.href = location.protocol === 'file:' ? page + '.html' : '/' + page;
 });
 
 /* ── the qualifier: Typeform's eight screens, one at a time ──
