@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Anthony Cox — RecRev email signature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;padding:40px 20px;background:#f4f2fb;font-family:Inter,Arial,sans-serif;color:#0f0d1a}.wrap{max-width:760px;margin:0 auto}h1{font-size:24px;margin:0 0 6px}p{color:#5d5975;line-height:1.6;margin:0 0 18px;font-size:15px}.card{background:#fff;border:1px solid #e9e5f5;border-radius:16px;padding:26px;margin:22px 0}.btn{display:inline-block;background:#8E4DC4;color:#fff;border:0;border-radius:999px;padding:12px 22px;font:600 15px Inter,Arial;cursor:pointer}.btn:active{transform:scale(.98)}ol{padding-left:20px;color:#2c2940;line-height:1.7;font-size:15px}#ok{color:#1a9c5b;font-weight:600;margin-left:12px;display:none}</style></head>
+<body><div class="wrap">
+<h1>Hi Anthony, here's your RecRev email signature</h1>
+<p>Three steps, about a minute.</p>
+<div class="card"><div id="sig"><table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Inter,Helvetica,Arial,sans-serif;color:#0f0d1a">
+<tr><td colspan="4" style="padding:0;font-size:0;line-height:0;height:4px;background:#C488E8;background-image:linear-gradient(90deg,#ED89E2,#C488E8 50%,#5E8DF3)">&nbsp;</td></tr>
+<tr>
+<td style="padding:18px 18px 18px 20px;vertical-align:middle">
+  <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse"><tr>
+    <td style="padding:3px;background:#C488E8;background-image:linear-gradient(90deg,#ED89E2,#C488E8 50%,#5E8DF3);border-radius:45px;font-size:0;line-height:0"><img src="https://recrev.com/sig/anthony.png" width="84" height="84" alt="Anthony Cox" style="display:block;width:84px;height:84px;border:0;border-radius:42px"></td>
+  </tr></table>
+</td>
+<td style="padding:18px 20px 18px 0;vertical-align:middle">
+  <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse">
+    <tr><td style="padding:0;font:700 19px/1.2 Inter,Helvetica,Arial,sans-serif;color:#0f0d1a;letter-spacing:-.02em">Anthony Cox</td></tr>
+    <tr><td style="padding:5px 0 0;font:600 11px/1.3 Inter,Helvetica,Arial,sans-serif;color:#8E4DC4;letter-spacing:.09em;text-transform:uppercase">Sales Development Representative</td></tr>
+    <tr><td style="padding:7px 0 9px;font-size:0;line-height:0"><table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse"><tr><td style="height:2px;width:34px;background:#C488E8;background-image:linear-gradient(90deg,#ED89E2,#C488E8 50%,#5E8DF3);border-radius:2px;font-size:0;line-height:0">&nbsp;</td></tr></table></td></tr>
+    <tr><td style="padding:0;font:13px/1.6 Inter,Helvetica,Arial,sans-serif;color:#2c2940"><a href="tel:+447463591551" style="color:#2c2940;text-decoration:none"><span style="color:#8E4DC4">&#9742;</span>&nbsp; +44 7463 591551</a></td></tr><tr><td style="padding:0;font:13px/1.6 Inter,Helvetica,Arial,sans-serif;color:#2c2940">
+      <a href="https://recrev.com" style="color:#5E8DF3;text-decoration:none;font-weight:600">recrev.com</a>
+    </td></tr>
+  </table>
+</td>
+<td style="padding:0;width:1px;background:#C488E8;background-image:linear-gradient(180deg,#ED89E2,#C488E8 50%,#5E8DF3);font-size:0;line-height:0">&nbsp;</td>
+<td style="padding:18px 22px;vertical-align:middle"><a href="https://recrev.com" style="text-decoration:none"><img src="https://recrev.com/sig/recrev-logo.png" width="104" alt="RecRev" style="display:block;width:104px;height:auto;border:0"></a></td>
+</tr>
+</table>
+</div></div>
+<button class="btn" id="copy">Copy signature</button><span id="ok">Copied ✓</span>
+<div class="card"><ol>
+<li>Press <b>Copy signature</b> above.</li>
+<li>Open Gmail → <b>Settings</b> (gear, top right) → <b>See all settings</b> → scroll to <b>Signature</b> → <b>Create new</b>, name it <b>RecRev</b>, click in the box and <b>paste</b> (Cmd+V / Ctrl+V).</li>
+<li>Just below, set <b>Signature defaults</b> to <b>RecRev</b> for both new emails and replies, then scroll down and <b>Save changes</b>.</li>
+</ol><p style="margin:14px 0 0">If the paste comes out as plain text, select everything on this page (Cmd+A / Ctrl+A), copy, and paste that instead — Gmail keeps the formatting either way.</p></div>
+<script>
+document.getElementById('copy').onclick=async()=>{const el=document.getElementById('sig');const html=el.innerHTML;const text=el.innerText;
+try{await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]);}
+catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');s.removeAllRanges();}
+document.getElementById('ok').style.display='inline';};
+</script></div></body></html>
