@@ -420,7 +420,7 @@ footer .ico i{width:26px;height:16px;border-radius:3px;border:1px solid var(--ha
 .wall.raw img{width:100%;height:auto;display:block;border:1px solid var(--hair-2);border-radius:8px;background:#fff;transform:rotate(var(--tilt,0deg))}
 .wall.raw>div:nth-child(3n){--tilt:-.6deg}.wall.raw>div:nth-child(4n){--tilt:.7deg}.wall.raw>div:nth-child(7n){--tilt:-.4deg}
 /* faq left/right */
-.faq h2{font-size:clamp(34px,4.6vw,54px)}
+/* 24 Sep (James): every section heading and sub heading the same size, so the FAQ h2 no longer has its own. */
 /* mail buttons */
 .mail img{width:18px;height:18px}
 /* q-videos grid (confirmation) */
@@ -770,7 +770,7 @@ img{max-width:100%}
 /* Hero: "make it slightly smaller, good for big screens but not small" — the h1 and the VSL come down a notch
    at laptop widths and the sub headline sits between the h1 and the video. */
 .hero h1{font-size:clamp(34px,4.6vw,62px);max-width:900px}
-.hero .hero-sub{margin:14px auto 0;max-width:620px;font-size:clamp(16px,1.3vw,18px)}
+.hero .hero-sub{margin:14px auto 0;max-width:620px}
 .hero .vsl{max-width:960px;margin-top:34px}
 @media(min-width:1500px){.hero h1{font-size:66px}.hero .vsl{max-width:1040px}}
 /* Funnel nav: logo only, no links away. */
@@ -858,3 +858,6 @@ section.dark .sec-head.center .lead{color:rgba(255,255,255,.7)}
 .confirm-hero .vsl{margin-top:26px}
 #portal .vsl{margin-top:8px}
 .sub-hero .lead{margin-top:18px!important}
+
+/* 24 Sep (James): one size for every sub heading under a section heading. */
+.hero .hero-sub,.sec-head .lead,.faq .sticky .lead,.head .lead{font-size:clamp(17px,1.4vw,19px)}
