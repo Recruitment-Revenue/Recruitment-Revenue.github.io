@@ -22,6 +22,19 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
   });
 
   // FAQ: one open at a time
+  // 24 Sep: self-hosted clips (confirmation pages). Click plays with native controls; one at a time.
+  var natives = Array.prototype.slice.call(document.querySelectorAll('.video[data-native]'));
+  natives.forEach(function (el) {
+    var v = el.querySelector('video'); if (!v) return;
+    function start() {
+      natives.forEach(function (o) { var ov = o.querySelector('video'); if (ov && ov !== v && !ov.paused) ov.pause(); });
+      el.classList.add('playing'); v.controls = true; v.play();
+    }
+    el.addEventListener('click', function (e) { if (!el.classList.contains('playing')) { e.preventDefault(); start(); } });
+    v.addEventListener('ended', function () { el.classList.remove('playing'); v.controls = false; });
+    el.setAttribute('role', 'button'); el.tabIndex = 0;
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); } });
+  });
   document.querySelectorAll('.qa').forEach(function (g) {
     g.querySelectorAll('details').forEach(function (d) {
       d.addEventListener('toggle', function () { if (d.open) g.querySelectorAll('details').forEach(function (o) { if (o !== d) o.open = false; }); });

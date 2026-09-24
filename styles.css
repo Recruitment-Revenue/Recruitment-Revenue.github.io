@@ -861,3 +861,7 @@ section.dark .sec-head.center .lead{color:rgba(255,255,255,.7)}
 
 /* 24 Sep (James): one size for every sub heading under a section heading. */
 .hero .hero-sub,.sec-head .lead,.faq .sticky .lead,.head .lead{font-size:clamp(17px,1.4vw,19px)}
+
+/* Self-hosted clips inside the click-to-play frame. */
+.video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.video.playing .play{display:none}
