@@ -14,26 +14,44 @@
 <meta property="og:title" content="You're booked — RecRev"><meta property="og:description" content="Your Google invite has been emailed to you. Confirm the meeting and get your questions answered."><meta property="og:type" content="website">
 </head>
 <body>
-<nav class="top" style="top:0">
+<nav class="top funnel" style="top:0">
   <div class="wrap">
-    <a class="logo" href="/" aria-label="RecRev home"><img src="assets/logos/logo-gradient.svg" alt="RecRev"></a>
-    <div class="links"><a href="/#results">Case Studies</a><a href="/#how">How it Works</a><a href="/#faq">FAQ</a></div>
-    <div class="navcta"><a class="btn sm primary" href="/#book">Book a Call <span class="arr">→</span></a></div>
+    <span class="logo" aria-label="RecRev"><img src="assets/logos/logo-gradient.svg" alt="RecRev"></span>
   </div>
 </nav>
-<header class="hero sub-hero">
+<!-- 24 Sep (Positioning doc, "recrev.com/confirmation1 and 2"): same layout as the old funnel confirmation page —
+     video at the top, the two steps, RecDash with the run-through video at the bottom. No chips, no "our process",
+     no links away from the page. The videos are the Wistia ones James pulled into Drive, re-encoded and self-hosted. -->
+<header class="hero sub-hero confirm-hero">
   <div class="blob b1" style="width:520px;height:520px;left:-8%;top:-30%;background:radial-gradient(circle,#ED89E2,transparent 65%)"></div><div class="blob b2" style="width:520px;height:520px;right:-8%;top:-20%;background:radial-gradient(circle,#5E8DF3,transparent 65%)"></div>
   <div class="wrap">
     <span class="pill"><i>✓</i> You're booked</span>
     <h1>Your Google Invite Has Been <em class="acc">Emailed To You</em></h1>
-    <p class="lead" style="margin:0 auto 22px;font-weight:600;color:var(--ink)">IMPORTANT: We Want To Help You Conduct Your Due-Diligence On Us, Before Our Call...</p>
-    <div class="chips"><span class="chip">Free performance analysis</span><span class="chip">Experience from $50M ad spend</span><span class="chip">Experience from over 35 different markets</span><span class="chip">0 month binding</span></div>
+    <p class="lead" style="margin:0 auto 22px;font-weight:600;color:var(--ink)"><b>IMPORTANT:</b> We Want To Help You Conduct Your Due-Diligence On Us, Before Our Call...</p>
+    <div class="vsl">
+      <div class="player" data-vsl>
+        <video playsinline muted preload="none" poster="assets/img/wistia-5ei0r78279.jpg" aria-label="Before our call">
+          <source src="assets/video/confirmation-intro.mp4" type="video/mp4">
+        </video>
+        <span class="badge">Watch first · 2 min</span>
+        <button class="sound" type="button" data-sound><i>🔊</i>Tap for sound</button>
+        <div class="big" aria-hidden="true"><span>▶</span></div>
+        <div class="bar" data-bar-box aria-label="Progress"><i data-bar></i></div>
+        <div class="ctrl" data-ctrl>
+          <button type="button" class="c-play" data-play aria-label="Play or pause">❚❚</button>
+          <span class="c-time" data-time>0:00 / 1:37</span>
+          <span class="c-spacer"></span>
+          <button type="button" class="c-speed" data-speed aria-label="Playback speed">1×</button>
+          <button type="button" class="c-full" data-full aria-label="Full screen">⛶</button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 <section class="tight" style="padding-top:20px">
   <div class="wrap confirm">
     <div class="stepcard"><span class="sn"><i>1</i> Step 1</span><h3>Please confirm the meeting on your calendar, so that we know you intend on showing up</h3>
-      <div class="mail"><a href="https://mail.google.com" rel="noopener">Go to Gmail</a><a href="https://outlook.live.com" rel="noopener">Go to Outlook</a><a href="https://mail.yahoo.com" rel="noopener">Go to Yahoo</a></div></div>
+      <div class="mail"><a href="https://mail.google.com" rel="noopener" target="_blank">Go to Gmail</a><a href="https://outlook.live.com" rel="noopener" target="_blank">Go to Outlook</a><a href="https://mail.yahoo.com" rel="noopener" target="_blank">Go to Yahoo</a></div></div>
     <div class="stepcard"><span class="sn"><i>2</i> Step 2</span><h3>Get your questions about our service answered</h3><p>Short videos from Sultan. Press play, they play right here.</p>
       <div class="qvids">
 <div class="qvid"><div class="video sm" data-provider="youtube" data-id="oUWI_saLDpU" aria-label="Play: How our service actually works"><img src="assets/img/yt-oUWI_saLDpU.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>How our service actually works</p></div>
@@ -42,31 +60,41 @@
 <div class="qvid"><div class="video sm" data-provider="youtube" data-id="K-M7MDe8ljc" aria-label="Play: What does 'qualified meeting' mean?"><img src="assets/img/yt-K-M7MDe8ljc.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>What does 'qualified meeting' mean?</p></div>
 <div class="qvid"><div class="video sm" data-provider="youtube" data-id="9LkBQeW-KSY" aria-label="Play: How long does it take to see results?"><img src="assets/img/yt-9LkBQeW-KSY.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>How long does it take to see results?</p></div>
 <div class="qvid"><div class="video sm" data-provider="youtube" data-id="IsPY5gSgEWs" aria-label="Play: What is the worst case scenario?"><img src="assets/img/yt-IsPY5gSgEWs.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>What is the worst case scenario?</p></div>
-<div class="qvid"><div class="video sm" data-provider="youtube" data-id="sTftxHu7S_s" aria-label="Play: "How can an external company sell my service?""><img src="assets/img/yt-sTftxHu7S_s.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"How can an external company sell my service?"</p></div>
-<div class="qvid"><div class="video sm" data-provider="youtube" data-id="OJkRjfCrblM" aria-label="Play: "We can't risk damaging our brand reputation""><img src="assets/img/yt-OJkRjfCrblM.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"We can't risk damaging our brand reputation"</p></div>
-<div class="qvid"><div class="video sm" data-provider="youtube" data-id="-rvH6nhbSFY" aria-label="Play: "What if you share leads among your clients?""><img src="assets/img/yt--rvH6nhbSFY.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"What if you share leads among your clients?"</p></div>
-<div class="qvid"><div class="video sm" data-provider="youtube" data-id="dD7LM7yCYlE" aria-label="Play: "What information do I get before the meeting?""><img src="assets/img/yt-dD7LM7yCYlE.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"What information do I get before the meeting?"</p></div>
+<div class="qvid"><div class="video sm" data-provider="youtube" data-id="sTftxHu7S_s" aria-label="Play: How can an external company sell my service?"><img src="assets/img/yt-sTftxHu7S_s.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"How can an external company sell my service?"</p></div>
+<div class="qvid"><div class="video sm" data-provider="youtube" data-id="OJkRjfCrblM" aria-label="Play: We can't risk damaging our brand reputation"><img src="assets/img/yt-OJkRjfCrblM.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"We can't risk damaging our brand reputation"</p></div>
+<div class="qvid"><div class="video sm" data-provider="youtube" data-id="-rvH6nhbSFY" aria-label="Play: What if you share leads among your clients?"><img src="assets/img/yt--rvH6nhbSFY.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"What if you share leads among your clients?"</p></div>
+<div class="qvid"><div class="video sm" data-provider="youtube" data-id="dD7LM7yCYlE" aria-label="Play: What information do I get before the meeting?"><img src="assets/img/yt-dD7LM7yCYlE.jpg" alt="" loading="lazy"><div class="play">▶</div></div><p>"What information do I get before the meeting?"</p></div>
       </div></div>
-    <div class="stepcard portal"><div><span class="sn"><i>R</i> RecDash</span><h3>RecDash: Your Tracking Portal</h3><p>Every meeting we book, every reply and every outcome, live in one place. You'll get your login on day one of onboarding.</p></div><img src="assets/img/recdash-portal.avif" alt="RecDash client portal" loading="lazy"></div>
   </div>
 </section>
-<section class="soft">
-  <div class="wrap"><div class="how">
-    <div class="sticky"><span class="eyebrow">Our process</span><h2>Here's The Process We'll <em class="acc">Take You Through</em></h2><p class="lead" style="margin-top:14px;font-size:16px">We handle the setup, outreach, replies, and booking — so you get new vacancies from new clients without lifting a finger.</p><a class="btn primary sm" style="margin-top:18px" href="/book-a-call">Book a Discovery Call <span class="arr">→</span></a></div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><div class="t">Step 1 — Onboarding Form</div><h3>Fill out the onboarding form</h3><p>Share your offer, ICP, services, and positioning so we can understand your agency like an extension of your in-house BD team.</p></div>
-      <div class="step"><div class="n">2</div><div class="t">Step 2 — Kick-Off Call</div><h3>Schedule your kick-off call</h3><p>We'll meet to learn more about your business, walk you through how we operate, and build a clear game plan for success.</p></div>
-      <div class="step"><div class="n">3</div><div class="t">Step 3 — System Setup</div><h3>Client acquisition system setup</h3><p>We set up your outbound engine — buying domains, warming inboxes, verifying leads, and building personalised scripts and sequences for approval.</p></div>
-      <div class="step"><div class="n">4</div><div class="t">Step 4 — Campaign Launch</div><h3>Launch your campaign</h3><p>Once approved, we launch your campaign and keep you updated with daily and weekly reporting while we optimise for high-quality lead volume.</p></div>
-      <div class="step"><div class="n">5</div><div class="t">Step 5 — Meetings on Autopilot</div><h3>Sales meetings on autopilot</h3><p>Our SDRs handle replies, qualify prospects, and book meetings directly into your calendar, so you can win new vacancies from new clients without lifting a finger.</p></div>
+<section class="soft" id="portal">
+  <div class="wrap">
+    <div class="head center" style="margin-bottom:26px"><span class="eyebrow">RecDash</span><h2>RecDash: Your <em class="acc">Tracking Portal</em></h2><p class="lead">Every meeting we book, every reply and every outcome, live in one place. Here's a quick run-through of what you'll get your login to on day one of onboarding.</p></div>
+    <div class="vsl">
+      <div class="player" data-vsl>
+        <video playsinline muted preload="none" poster="assets/img/wistia-qmol6lmkhw.jpg" aria-label="RecDash run-through">
+          <source src="assets/video/recdash-runthrough.mp4" type="video/mp4">
+        </video>
+        <span class="badge">RecDash run-through · 1 min</span>
+        <button class="sound" type="button" data-sound><i>🔊</i>Tap for sound</button>
+        <div class="big" aria-hidden="true"><span>▶</span></div>
+        <div class="bar" data-bar-box aria-label="Progress"><i data-bar></i></div>
+        <div class="ctrl" data-ctrl>
+          <button type="button" class="c-play" data-play aria-label="Play or pause">❚❚</button>
+          <span class="c-time" data-time>0:00 / 0:51</span>
+          <span class="c-spacer"></span>
+          <button type="button" class="c-speed" data-speed aria-label="Playback speed">1×</button>
+          <button type="button" class="c-full" data-full aria-label="Full screen">⛶</button>
+        </div>
+      </div>
     </div>
-  </div></div>
+  </div>
 </section>
 <footer>
   <div class="wrap">
     <div class="row">
-      <div class="brand"><img src="assets/logos/logo-gradient.svg" alt="RecRev"><p>Vacancies from new clients, on results. Built for recruitment agencies and exec search firms.</p></div>
-      <div class="links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="https://www.linkedin.com/company/recruitment-revenue/posts/?feedView=all" rel="noopener">LinkedIn</a><a href="/book-a-call">Book a Call</a></div>
+      <div class="brand"><img src="assets/logos/logo-gradient.svg" alt="RecRev"><p>Performance based business development for recruitment agencies.</p></div>
+      <div class="links"><a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a><a href="terms.html" target="_blank" rel="noopener">Terms</a></div>
     </div>
     <div class="legal">
       <span>© 2026 RecRev Ltd. All rights reserved. Company no. 17294842 · Unit 17 Orbital 25 Business Park, Dwight Road, Watford, WD18 9DA</span>
