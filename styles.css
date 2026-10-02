@@ -287,7 +287,7 @@ footer .ico i{width:26px;height:16px;border-radius:3px;border:1px solid var(--ha
 .sub-hero h1{font-size:clamp(34px,4.8vw,58px);max-width:900px;margin:18px auto 16px}
 .guar{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--hair);border-radius:14px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink-2);box-shadow:var(--shadow-sm);margin-top:22px}
 .guar i{width:28px;height:28px;border-radius:8px;background:var(--grad);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:13px}
-.props{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.props{display:grid;grid-template-columns:repeat(2,1fr);gap:16px} /* 2 Oct (James): eight cards, two by two */
 @media(max-width:860px){.props{grid-template-columns:1fr}}
 .props .card{padding:22px}
 .props .card i{width:36px;height:36px;border-radius:10px;background:var(--paper-3);display:inline-flex;align-items:center;justify-content:center;font-style:normal;margin-bottom:12px}
