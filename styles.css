@@ -549,13 +549,11 @@ section.dark .btn.primary:hover:after{opacity:1}
 .player .bar .s{position:relative;height:100%;border-radius:999px;background:rgba(255,255,255,.32);transition:transform .15s,background .15s;transform-origin:bottom;overflow:visible}
 .player .bar .s>i{display:block;height:100%;width:0;border-radius:999px;background:var(--grad);pointer-events:none}
 .player .bar.seg:hover{height:7px}.player .bar .s:hover{background:rgba(255,255,255,.5)}
-.player .bar .s .tip{position:absolute;bottom:18px;left:50%;transform:translateX(-50%) translateY(6px);display:flex;flex-direction:column;gap:3px;min-width:160px;max-width:260px;width:max-content;white-space:normal;text-align:left;background:rgba(12,12,18,.92);backdrop-filter:blur(8px);color:#fff;font:600 13px/1.35 Inter,system-ui,sans-serif;padding:10px 14px 11px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+.player .bar .s .tip{position:absolute;bottom:18px;left:0;transform:translateY(6px);display:flex;flex-direction:column;gap:3px;min-width:160px;max-width:260px;width:max-content;white-space:normal;text-align:left;background:rgba(12,12,18,.92);backdrop-filter:blur(8px);color:#fff;font:600 13px/1.35 Inter,system-ui,sans-serif;padding:10px 14px 11px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
 .player .bar .s .tip small{font:600 11px/1 Inter,system-ui,sans-serif;letter-spacing:.06em;opacity:.6;font-variant-numeric:tabular-nums}
-.player .bar .s .tip:after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;transform:translateX(-50%) rotate(45deg);background:rgba(12,12,18,.92)}
-.player .bar .s:first-child .tip{left:0;transform:translateY(6px)}.player .bar .s:first-child .tip:after{left:18px}
-.player .bar .s:last-child .tip{left:auto;right:0;transform:translateY(6px)}.player .bar .s:last-child .tip:after{left:auto;right:12px;transform:rotate(45deg)}
-.player .bar .s:hover .tip{opacity:1;transform:translateX(-50%)}
-.player .bar .s:first-child:hover .tip,.player .bar .s:last-child:hover .tip{transform:none}
+/* The card is placed by main.js so it never leaves the player; --ax keeps the arrow over the segment. */
+.player .bar .s .tip:after{content:"";position:absolute;left:var(--ax,50%);bottom:-5px;width:10px;height:10px;transform:translateX(-50%) rotate(45deg);background:rgba(12,12,18,.92)}
+.player .bar .s:hover .tip{opacity:1;transform:none}
 .player .bar:before{content:"";position:absolute;left:0;right:0;top:-14px;bottom:-6px}
 .player .big{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:3}
 .player .big span{width:80px;height:80px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;padding-left:6px;box-shadow:0 14px 40px rgba(0,0,0,.35)}

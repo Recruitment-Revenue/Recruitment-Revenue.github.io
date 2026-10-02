@@ -115,6 +115,14 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       chapters.forEach(function (ch, i) {
         var d = document.createElement('div'); d.className = 's';
         var tip = document.createElement('span'); tip.className = 'tip'; var tm = document.createElement('small'); tm.textContent = fmt(ch.s); tip.appendChild(tm); tip.appendChild(document.createTextNode(ch.title)); d.appendChild(tip);
+        /* 2 Oct: keep the card inside the player. Narrow segments at either end used to push it off the edge. */
+        d.addEventListener('mouseenter', function () {
+          var r = d.getBoundingClientRect(), br = barBox.getBoundingClientRect(), tw = tip.offsetWidth, pad = 6;
+          var segLeft = r.left - br.left, want = segLeft + r.width / 2 - tw / 2;
+          var left = Math.max(pad, Math.min(want, br.width - tw - pad));
+          tip.style.left = (left - segLeft) + 'px';
+          tip.style.setProperty('--ax', Math.max(14, Math.min(tw - 14, segLeft + r.width / 2 - left)) + 'px');
+        });
         var sg = { el: d, s: ch.s, e: i + 1 < chapters.length ? chapters[i + 1].s : dur };
         d.style.flex = String(Math.max(1, sg.e - sg.s)) + ' 1 0';
         d.appendChild(document.createElement('i'));
