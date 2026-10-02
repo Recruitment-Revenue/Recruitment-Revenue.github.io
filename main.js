@@ -94,8 +94,10 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       v.addEventListener('timeupdate', function () { timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration); });
       v.addEventListener('loadedmetadata', function () { timeEl.textContent = '0:00 / ' + fmt(v.duration); });
     }
-    /* 21 Sep (Kwame): chapters are segments on the progress bar, YouTube style. Hover shows the name, click seeks. */
-    var chapters = window.VSL_CHAPTERS || [], barBox = box.querySelector('[data-bar-box]'), segs = [];
+    /* 21 Sep (Kwame): chapters are segments on the progress bar, YouTube style. Hover shows the name, click seeks.
+       2 Oct (James): the list is the 12-minute VSL's, so only the player marked data-chapters gets it. The
+       confirmation intro and the RecDash run-through are different videos and get a plain bar. */
+    var chapters = box.hasAttribute('data-chapters') ? (window.VSL_CHAPTERS || []) : [], barBox = box.querySelector('[data-bar-box]'), segs = [];
     function seekTo(t) { start(); unmute(); box.classList.remove('paused', 'user-paused'); v.currentTime = t; play(); }
     function buildSegs(dur) {
       if (!barBox || !chapters.length || !dur) return;
@@ -116,7 +118,7 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       });
     }
     if (barBox) {
-      buildSegs(v.duration || window.VSL_DURATION || 0);
+      buildSegs(v.duration || (chapters.length ? window.VSL_DURATION : 0) || 0);
       v.addEventListener('loadedmetadata', function () { buildSegs(v.duration); });
       barBox.addEventListener('click', function (e) {
         e.stopPropagation();
