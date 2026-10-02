@@ -91,7 +91,14 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       });
       v.addEventListener('play', function () { playB.textContent = '❚❚'; });
       v.addEventListener('pause', function () { playB.textContent = '▶'; });
-      v.addEventListener('timeupdate', function () { timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration); });
+      var chapEl = ctrl.querySelector('[data-chapter]');
+      v.addEventListener('timeupdate', function () {
+        timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration);
+        if (chapEl && window.VSL_CHAPTERS && box.hasAttribute('data-chapters')) {
+          var cur = null; window.VSL_CHAPTERS.forEach(function (c) { if (v.currentTime >= c.s) cur = c; });
+          chapEl.textContent = cur ? '\u00b7 ' + cur.title : '';
+        }
+      });
       v.addEventListener('loadedmetadata', function () { timeEl.textContent = '0:00 / ' + fmt(v.duration); });
     }
     /* 21 Sep (Kwame): chapters are segments on the progress bar, YouTube style. Hover shows the name, click seeks.
@@ -106,7 +113,8 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       }
       barBox.classList.add('seg');
       chapters.forEach(function (ch, i) {
-        var d = document.createElement('div'); d.className = 's'; d.setAttribute('data-title', fmt(ch.s) + '  ' + ch.title);
+        var d = document.createElement('div'); d.className = 's';
+        var tip = document.createElement('span'); tip.className = 'tip'; var tm = document.createElement('small'); tm.textContent = fmt(ch.s); tip.appendChild(tm); tip.appendChild(document.createTextNode(ch.title)); d.appendChild(tip);
         var sg = { el: d, s: ch.s, e: i + 1 < chapters.length ? chapters[i + 1].s : dur };
         d.style.flex = String(Math.max(1, sg.e - sg.s)) + ' 1 0';
         d.appendChild(document.createElement('i'));
@@ -127,7 +135,7 @@ window.VSL_CHAPTERS = [{s:0,title:"Is this you?"},{s:17,title:"What we do"},{s:4
       });
       v.addEventListener('timeupdate', function () {
         if (!segs.length) return;
-        segs.forEach(function (sg) { sg.el.firstChild.style.width = (Math.min(1, Math.max(0, (v.currentTime - sg.s) / (sg.e - sg.s))) * 100) + '%'; });
+        segs.forEach(function (sg) { sg.el.querySelector('i').style.width = (Math.min(1, Math.max(0, (v.currentTime - sg.s) / (sg.e - sg.s))) * 100) + '%'; });
       });
     }
   });

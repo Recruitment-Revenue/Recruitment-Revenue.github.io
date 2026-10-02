@@ -542,16 +542,20 @@ section.dark .btn.primary:hover:after{opacity:1}
 .player.sound-on .sound{opacity:0;pointer-events:none}
 .player .bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.18);z-index:5;transition:bottom .2s,height .15s;cursor:pointer}
 .player .bar>i{display:block;height:100%;width:0;background:var(--grad)}
-/* 21 Sep (Kwame): chapters live on the progress bar, YouTube style: one segment per chapter, name on hover */
-.player .bar.seg{display:flex;gap:3px;background:transparent}
+/* 21 Sep (Kwame): chapters live on the progress bar, YouTube style: one segment per chapter, name on hover.
+   2 Oct (Sultan): the hover card is a proper card: time on its own line, title wrapped, room to breathe. */
+.player .bar.seg{display:flex;gap:4px;background:transparent;height:5px}
 .player .bar.seg>i{display:none}
-.player .bar .s{position:relative;height:100%;background:rgba(255,255,255,.34);transition:transform .15s;transform-origin:bottom}
-.player .bar .s>i{display:block;height:100%;width:0;background:var(--grad);pointer-events:none}
-.player .bar:hover{height:7px}.player .bar .s:hover{transform:scaleY(1.35)}
-.player .bar .s:after{content:attr(data-title);position:absolute;bottom:14px;left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;background:rgba(0,0,0,.82);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:7px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
-.player .bar .s:first-child:after{left:0;transform:none}.player .bar .s:last-child:after{left:auto;right:0;transform:none}
-.player .bar .s:hover:after{opacity:1;transform:translateX(-50%)}
-.player .bar .s:first-child:hover:after,.player .bar .s:last-child:hover:after{transform:none}
+.player .bar .s{position:relative;height:100%;border-radius:999px;background:rgba(255,255,255,.32);transition:transform .15s,background .15s;transform-origin:bottom;overflow:visible}
+.player .bar .s>i{display:block;height:100%;width:0;border-radius:999px;background:var(--grad);pointer-events:none}
+.player .bar.seg:hover{height:7px}.player .bar .s:hover{background:rgba(255,255,255,.5)}
+.player .bar .s .tip{position:absolute;bottom:18px;left:50%;transform:translateX(-50%) translateY(6px);display:flex;flex-direction:column;gap:3px;min-width:160px;max-width:260px;width:max-content;white-space:normal;text-align:left;background:rgba(12,12,18,.92);backdrop-filter:blur(8px);color:#fff;font:600 13px/1.35 Inter,system-ui,sans-serif;padding:10px 14px 11px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+.player .bar .s .tip small{font:600 11px/1 Inter,system-ui,sans-serif;letter-spacing:.06em;opacity:.6;font-variant-numeric:tabular-nums}
+.player .bar .s .tip:after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;transform:translateX(-50%) rotate(45deg);background:rgba(12,12,18,.92)}
+.player .bar .s:first-child .tip{left:0;transform:translateY(6px)}.player .bar .s:first-child .tip:after{left:18px}
+.player .bar .s:last-child .tip{left:auto;right:0;transform:translateY(6px)}.player .bar .s:last-child .tip:after{left:auto;right:12px;transform:rotate(45deg)}
+.player .bar .s:hover .tip{opacity:1;transform:translateX(-50%)}
+.player .bar .s:first-child:hover .tip,.player .bar .s:last-child:hover .tip{transform:none}
 .player .bar:before{content:"";position:absolute;left:0;right:0;top:-14px;bottom:-6px}
 .player .big{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:3}
 .player .big span{width:80px;height:80px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;padding-left:6px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
@@ -689,6 +693,7 @@ body.scrolled nav.top{box-shadow:0 10px 30px -22px rgba(30,16,80,.35);background
 .player .ctrl button{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;height:30px;min-width:34px;padding:0 10px;cursor:pointer;font:600 12px/1 Inter,system-ui,sans-serif;backdrop-filter:blur(6px)}
 .player .ctrl button:hover{background:rgba(255,255,255,.26)}
 .player .ctrl .c-spacer{flex:1}.player .ctrl .c-time{font-variant-numeric:tabular-nums;opacity:.9}
+.player .ctrl .c-chapter{opacity:.75;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40%}.player .ctrl .c-chapter:empty{display:none}
 .player .ctrl .c-speed{min-width:46px}
 .player:fullscreen{border-radius:0}.player:fullscreen video{object-fit:contain}
 .player:hover .bar,.player.paused .bar,.player:fullscreen .bar{bottom:52px}
